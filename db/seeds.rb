@@ -9,11 +9,11 @@
 # response = HTTParty.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list', format: :plain)
 # ingredients = JSON.parse(response.body)
 
-# ingredients["drinks"].each do |ingredient|
-#   Ingredient.create(
-#     name: ingredient["strIngredient1"]
-#   )
-# end
+ingredients["drinks"].each do |ingredient|
+  Ingredient.create(
+    name: ingredient["strIngredient1"]
+  )
+end
 
 require 'faker'
 
