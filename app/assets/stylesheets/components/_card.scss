@@ -1,4 +1,19 @@
-.carta-muy-caliente {
-  display: flex;
-  border: 1px solid #F60074
+// .card-name{
+//   transition: transform 0.3s;
+// }
+// .card-name:hover{
+//   transform: scale(1.15);
+// }
+
+.card {
+  overflow: hidden;
 }
+.card-body-index {
+  transition: transform 0.3s;
+
+}
+
+.card-body-index:hover {
+  transform: scale(1.15);
+}
+

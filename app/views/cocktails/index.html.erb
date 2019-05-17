@@ -1,13 +1,26 @@
 <div class="container">
   <div class="row">
     <% @cocktails.each do |item| %>
-    <div class="col-4 d-flex mb-3">
-      <div class="card flex-grow-1">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to "#{item.name}", cocktail_path(item), style:'text-decoration:none'%></h5>
-      </div>
-      </div>
-    </div>
+      <% if item.photo? %>
+        <div class="col-lg-4 col-md-6 col-sm-6 mb-3 ">
+          <div class="card flex-grow-1 rounded" style="height: 320px">
+          <div class="card-body card-body-index d-flex align-items-center justify-content-around" 
+          style="background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path item.photo %>'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <h5 class="card-name" id="title-drink"><%= link_to "#{item.name}", cocktail_path(item), style:'text-decoration:none; color:white'%></h5>
+          </div>
+          </div>
+        </div>
+      <% else%>
+        <div class="col-lg-4 col-md-6 col-sm-4 mb-3">
+          <div class="card flex-grow-1" style="height: 320px; background: black">
+          <div class="card-body card-body-index d-flex align-items-center justify-content-around">
+            <h5 class="card-name"><%= link_to "#{item.name}", cocktail_path(item), style:'text-decoration:none; color:white'%></h5>
+          </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+

@@ -1,25 +1,42 @@
-<div class="container ">
-
-<div class="card mx-auto" style="width: 32rem">
-  <div class="card-header">
-    <h2><%= @cocktail.name %></h2>
-  </div>
-  <div class="card-body p-4 m-3">
-    <h4>Contains these ingredients: </h4>
+<div class="container">
+<% if @cocktail.photo %>
+  <div class="card mx-auto" style="width: 40rem">
+    <div class="card-header ">
+      <h2><%= @cocktail.name %></h2>
+    </div>
+    <div class="card-body p-4 m-3">
+      <h4>Contains these ingredients: </h4>
       <ul>
-        <% @cocktail.doses.each do |dose|  %>
-          <li class="d-flex justify-content-between align-items-center mb-3 p-3">
-            <p class="m-0"><%= dose.description %>ml of <%= dose.ingredient.name %></p>
-            <%= link_to 'Delete', dose_path(dose), method: :delete, class:'btn btn-dark'%>
-          </li>
-        <% end %>
+      <% @cocktail.doses.each do |dose|  %>
+        <li class="d-flex justify-content-between align-items-center mb-3 p-3">
+          <p class="m-0"><%= dose.description %>ml of <%= dose.ingredient.name %></p>
+          <%= link_to 'Delete', dose_path(dose), method: :delete, class:'btn btn-dark'%>        
+        </li>
+      <% end %>
         <hr>
       </ul>
-    <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-dark"  %>
-
+      <%= link_to 'Edit', edit_cocktail_path(@cocktail), class:'btn btn-dark'%>
+      <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-dark"  %>
+    </div>
   </div>
-</div>
-
-
-
+  <% else %>
+  <div class="card mx-auto" style="width: 32rem">
+    <div class="card-header ">
+      <h2><%= @cocktail.name %></h2>
+    </div>
+    <div class="card-body p-4 m-3">
+      <h4>Contains these ingredients: </h4>
+      <ul>
+      <% @cocktail.doses.each do |dose|  %>
+        <li class="d-flex justify-content-between align-items-center mb-3 p-3">
+          <p class="m-0"><%= dose.description %>ml of <%= dose.ingredient.name %></p>
+          <%= link_to 'Delete', dose_path(dose), method: :delete, class:'btn btn-dark'%>
+        </li>
+      <% end %>
+        <hr>
+      </ul>
+      <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-dark"  %>
+    </div>
+  </div>
+  <% end %>
 </div>

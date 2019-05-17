@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lor
 
-# require 'httparty'
-# response = HTTParty.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list', format: :plain)
-# ingredients = JSON.parse(response.body)
+require 'httparty'
+response = HTTParty.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list', format: :plain)
+ingredients = JSON.parse(response.body)
 
 ingredients["drinks"].each do |ingredient|
   Ingredient.create(
@@ -17,9 +17,9 @@ end
 
 require 'faker'
 
-40.times do 
+10.times do 
   Cocktail.create(
-    name: Faker::Science.scientist
+    name: Faker::Science.scientist,
   )
 end
 
