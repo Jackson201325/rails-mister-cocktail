@@ -3,5 +3,24 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lor
+
+# require 'httparty'
+# response = HTTParty.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list', format: :plain)
+# ingredients = JSON.parse(response.body)
+
+# ingredients["drinks"].each do |ingredient|
+#   Ingredient.create(
+#     name: ingredient["strIngredient1"]
+#   )
+# end
+
+require 'faker'
+
+40.times do 
+  Cocktail.create(
+    name: Faker::Science.scientist
+  )
+end
+
+

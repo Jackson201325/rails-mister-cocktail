@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |item| %>
+    <div class="col-4 d-flex mb-3">
+      <div class="card flex-grow-1">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to "#{item.name}", cocktail_path(item), style:'text-decoration:none'%></h5>
+      </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
